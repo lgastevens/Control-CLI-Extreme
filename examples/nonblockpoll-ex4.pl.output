@@ -1,0 +1,74 @@
+C:\Users\ludovicostev\Documents\Scripts\MODULES\BUILD\Control-CLI-AvayaData\examples>nonblockpoll-ex4.pl
+Using Control::CLI 2.00_100
+Using Control::CLI::AvayaData 2.00_100
+
+Created CLI object for:
+ - 8600C
+ - 8600D
+ - 8600A
+ - 8600B
+ - Bogus
+SSH connecting to switches .................................
+ - Have completed : 8600A,8600D
+ - Summary        : Still running = 3 ; Completed = 2 ; Failed = 0
+................................................................................
+ - Have failed    : 8600C,8600B,Bogus
+         8600C  : Control::CLI::AvayaData::connect_poll: Timeout reading login prompt
+         8600B  : Control::CLI::AvayaData::connect_poll: Timeout reading login prompt
+         Bogus  : Control::CLI::AvayaData::connect_poll: connection timeout expired
+ - Summary        : Still running = 0 ; Completed = 2 ; Failed = 3
+
+Entering PrivExec mode .
+ - Have failed    : 8600C,8600B,Bogus
+         8600C  : Control::CLI::AvayaData::enable: No connection established
+         8600B  : Control::CLI::AvayaData::enable: No connection established
+         Bogus  : Control::CLI::AvayaData::enable: No connection established
+ - Summary        : Still running = 2 ; Completed = 0 ; Failed = 3
+..
+ - Have completed : 8600A,8600D
+ - Summary        : Still running = 0 ; Completed = 2 ; Failed = 3
+
+Sending commands ...
+ - Have completed : 8600A,8600D
+ - Summary        : Still running = 0 ; Completed = 2 ; Failed = 3
+...
+ - Have completed : 8600A,8600D
+ - Summary        : Still running = 0 ; Completed = 2 ; Failed = 3
+...
+ - Have completed : 8600A,8600D
+ - Summary        : Still running = 0 ; Completed = 2 ; Failed = 3
+...
+ - Have completed : 8600A,8600D
+ - Summary        : Still running = 0 ; Completed = 2 ; Failed = 3
+
+
+Output from 8600D:
+---------------------
+Enter configuration commands, one per line.  End with CNTL/Z.
+
+                 trap-sender :
+           force-trap-sender : FALSE
+          force-iphdr-sender : FALSE
+           agent-conformance : DISABLED
+                     contact : http://support.avaya.com/
+                    location : this is a test!
+                        name : 8600D
+          AuthenticationTrap : false
+            LoginSuccessTrap : false
+                   bootstrap : unknown level
+
+
+Output from 8600A:
+---------------------
+Enter configuration commands, one per line.  End with CNTL/Z.
+
+                 trap-sender :
+           force-trap-sender : FALSE
+          force-iphdr-sender : FALSE
+           agent-conformance : DISABLED
+                     contact : http://support.avaya.com/
+                    location : this is a test!
+                        name : 8600A
+          AuthenticationTrap : false
+            LoginSuccessTrap : false
+                   bootstrap : unknown level

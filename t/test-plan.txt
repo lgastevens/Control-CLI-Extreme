@@ -1,0 +1,166 @@
+PassportERS:
+============
+- VSP9000 Master CP		10.134.169.91
+	telnet, ssh, annex
+	perl t\avayadata.t telnet rwa:rwa@10.134.169.91 0
+	perl t\avayadata.t ssh rwa:rwa@10.134.169.91 0
+	perl t\avayadata.t telnet rwa:rwa@"10.134.167.23 5003" 0
+	   or perl t\avayadata.t telnet rwa:rwa@"10.134.167.23 5005" 0
+
+- VSP9000 Standby CP		10.134.169.121
+	telnet, ssh, annex
+	perl t\avayadata.t telnet rwa:rwa@10.134.169.121 0
+	perl t\avayadata.t ssh rwa:rwa@10.134.169.121 0
+	perl t\avayadata.t telnet rwa:rwa@"10.134.167.23 5004" 0
+	   or perl t\avayadata.t telnet rwa:rwa@"10.134.167.23 5006" 0
+
+- VSP8600			10.134.169.86
+	perl t\avayadata.t telnet rwa:rwa@10.134.169.86 0
+	perl t\avayadata.t ssh rwa:rwa@10.134.169.86 0
+
+- DSG9032			10.134.169.93
+	perl t\avayadata.t telnet rwa:rwa@10.134.169.93 0
+	perl t\avayadata.t ssh rwa:rwa@10.134.169.93 0
+
+- DSG6248P			10.134.169.46
+	perl t\avayadata.t telnet rwa:rwa@10.134.169.46 0
+	perl t\avayadata.t ssh rwa:rwa@10.134.169.46 0
+
+- VSP8200			10.134.169.81
+	perl t\avayadata.t telnet rwa:rwa@10.134.169.81 0
+	perl t\avayadata.t ssh rwa:rwa@10.134.169.81 0
+
+- VSP8400 with 40G channelized	10.134.169.83
+	perl t\avayadata.t telnet rwa:rwa@10.134.169.83 0
+	
+- VSP4850			10.134.169.43
+	perl t\avayadata.t telnet rwa:rwa@10.134.169.43 0
+	perl t\avayadata.t ssh rwa:rwa@10.134.169.43 0
+
+- VSP4450			10.134.169.41
+	perl t\avayadata.t telnet rwa:rwa@10.134.169.41 0
+	perl t\avayadata.t ssh rwa:rwa@10.134.169.41 0
+
+- ERS8800 Single CP	acli	10.134.169.163
+	perl t\avayadata.t telnet rwa:rwa@10.134.169.164 0
+	perl t\avayadata.t ssh rwa:rwa@10.134.169.164 0
+
+- ERS8800 Master CP	acli	10.134.169.161
+	perl t\avayadata.t telnet rwa:rwa@10.134.169.161 0
+	perl t\avayadata.t ssh rwa:rwa@10.134.169.161 0
+
+- ERS8800 Standby CP	acli	10.134.169.155
+	perl t\avayadata.t telnet rwa:rwa@10.134.169.155 0
+	perl t\avayadata.t ssh rwa:rwa@10.134.169.155 0
+
+- ERS8600 Single CP	ppcli	10.134.169.167
+	perl t\avayadata.t telnet rwa:rwa@10.134.169.167 0
+	perl t\avayadata.t ssh rwa:rwa@10.134.169.167 0
+
+- ERS8600 3-slot chassis	10.134.161.15		perl t\avayadata.t telnet rwa:rwa@10.134.161.15 0
+- ERS8600 Dual CP	old-sw	10.134.169.1		perl t\avayadata.t telnet rwa:rootse@10.134.169.1 0
+- ERS8600 Master CP	old-sw	10.134.169.169		perl t\avayadata.t telnet rwa:rwa@10.134.169.169 0
+- ERS8600 Standby CP	old-sw	10.134.169.159		perl t\avayadata.t telnet rwa:rwa@10.134.169.159 0
+
+- ERS8300 Master CP	ppcli	10.134.161.131		perl t\avayadata.t telnet rwa:rwa@10.134.161.131 0
+- ERS8300 Standby CP	ppcli	10.134.161.134		perl t\avayadata.t telnet rwa:rwa@10.134.161.134 0
+- ERS8300 Single CP	acli	10.134.161.132		perl t\avayadata.t telnet rwa:rwa@10.134.161.132 0
+
+- ERS1600			10.134.161.16		perl t\avayadata.t telnet rwa:rwa@10.134.161.16 0
+- ERS1600			10.134.161.17		perl t\avayadata.t telnet rwa:rwa@10.134.161.17 0
+
+BaystackERS:
+============
+- VSP7000 Standalone		10.134.169.71		perl t\avayadata.t telnet rwa:rwa@10.134.169.71 0
+- VSP7000 Stack			10.134.169.70		perl t\avayadata.t telnet rwa:rwa@10.134.169.70 0
+- ERS5600 Standalone		10.134.169.51		perl t\avayadata.t telnet rwa:rwa@10.134.169.51 0
+- ERS5500 Standalone		10.134.167.5		perl t\avayadata.t telnet rwa:rwa@10.134.167.6 0
+- ERS4500 Standalone		10.134.161.114		perl t\avayadata.t telnet rwa:rwa@10.134.161.114 0
+- ERS4500 Stack			20.0.92.10			perl t/avayadata.t telnet 20.0.92.10 0
+- ERS4800 Stack			20.0.98.10			perl t/avayadata.t telnet 20.0.98.10 0
+- ERS3500 Stack			20.0.91.11			perl t/avayadata.t telnet 20.0.91.11 0
+- ERS3500 Standalone		10.134.161.113		perl t\avayadata.t telnet rwa:rwa@10.134.161.113 0
+- ERS2500 Standalone		10.134.161.112		perl t\avayadata.t telnet rwa:rwa@10.134.161.112 0		?
+- ES470				10.134.161.111		perl t\avayadata.t telnet rwa:rwa@10.134.161.111 0
+- WC8100			10.134.161.117		perl t\avayadata.t telnet rwa:rwa@10.134.161.117 0
+
+
+WLAN9100
+============
+- WLAN9100			10.134.161.215<dhcp>	perl t\avayadata.t ssh admin:admin@10.134.161.213 0
+				A1714270338E3
+
+Generic
+============
+- Cisco Catalyst 3750		10.134.160.31		perl t\avayadata.t telnet admin:rootse@10.134.160.31 0
+- Remote Annex			10.134.160.240		perl t\avayadata.t telnet admin:rootse@10.134.161.250 0
+
+
+Cases to test
+=============
+accepts only publickey | keyboard-interactive auth		 
+
+
+ExtremeXOS
+==========
+
+Series200
+=========
+- S210		10.8.9.29
+	perl t\extremecli.t telnet admin:@10.8.9.29 0
+
+- S220		10.8.9.30
+	perl t\extremecli.t telnet admin:@10.8.9.30 0
+
+Wing
+====
+- AP8533	home 192.168.0.20
+	perl t\extremecli.t ssh admin:Admin123@192.168.0.20 1
+	perl t\extremecli.t COM3 115200 admin:Admin123 0
+
+- CTC Controller
+	open -l lstevens 10.8.255.67
+	perl t/extremecli.t ssh lstevens:deargibbon12@10.8.255.67 0
+	then do "show adoption status" to see available APs
+	then open -l admin:password <one of those IPs>
+
+
+SLX
+===
+
+- SLX9850 	slx-r	10.8.14.1-3
+	perl t\extremecli.t telnet admin:password@10.8.14.1 0
+	perl t\extremecli.t ssh admin:password@10.8.14.1 0
+	perl t\extremecli.t telnet admin:password@10.8.14.3 0
+	perl t\extremecli.t ssh admin:password@10.8.14.3 0
+
+- SLX9540 	slx-r	10.8.14.12
+	perl t\extremecli.t telnet admin:password@10.8.14.12 0
+	perl t\extremecli.t ssh admin:password@10.8.14.12 0
+
+- SLX9140 	slx-s	10.8.14.22
+	perl t\extremecli.t telnet admin:password@10.8.14.22 0
+	perl t\extremecli.t ssh admin:password@10.8.14.22 0
+
+- SLX9240 	slx-s	10.8.14.17
+	perl t\extremecli.t telnet admin:password@10.8.14.22 0
+	perl t\extremecli.t ssh admin:password@10.8.14.22 0
+
+- SLX9030 	slx-x	10.8.14.24
+	perl t\extremecli.t telnet admin:password@10.8.14.22 0
+	perl t\extremecli.t ssh admin:password@10.8.14.22 0
+
+
+
+Ipanema
+=======
+	acli-dev -t ipanema:ipanema@10.8.10.239 5006
+	perl t/extremecli.t ssh ipanema:ipanema@10.8.10.239 5006 0
+	
+
+HiveOS
+======
+- CTC AP410	open -l admin:Admin123 10.8.31.12
+	perl t/extremecli.t ssh admin:Admin123@10.8.31.12 0
+	
+

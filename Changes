@@ -1,0 +1,126 @@
+Revision history for Control-CLI-Extreme
+
+0.01	2017-11-19
+	* Initial; first version, branched off from Control-CLI-AvayaData version 2.04
+
+0.02	2018-01-06
+	* Method login() now will accept an empty password, for devices where no password is set but still prompt for
+	  a password on connection
+	* Adjusted cmd() method's timers for detection of command embedded prompt which were sometimes seen to give
+	  some false positives
+
+0.03	2018-02-11
+	* Method login() was failing with SSH publickey authentication on ERS on TCP port other than 22
+
+0.04	2018-02-17
+	* Connection was not working to serial port of non-master switch in an XOS Summit stack
+
+1.00	2018-02-18
+	* First version posted on CPAN
+
+1.01	2018-09-02
+	* Internal method discoverDevice(), used by login(), was failing to set the default prompt on "Generic"
+	  non-Extreme device types which used either '$' or '?' as last character on their prompts
+	* Added support for ISW (Extreme Networks industrial switch range)
+	* Added non_recognized_login argument flag to both connect() and login() methods, which controls whether the
+	  login() method should immediately return when an initial login output sequence is not recognized or whether
+	  the method should keep trying to read login output until either a recognized login prompt is detected or
+	  expiry of the timeout
+	* Updates to error patterns
+	* Added generic_login argument flag to both connect() and login() methods, which disables extended discovery
+	  if it is desired to connect to non Extreme devices using this class
+	* Was failing to properly read attribute 'max_baud' on PassportERS family type
+	* Attribute switch_mode was getting incorrectly set to 'Stack' on standalone ExtremeXOS x440 & x670
+
+1.02	2019-05-01
+	* Updated prompt detection for ExtremeXOS to handle cases where prompt preceded by '!' or an operational
+	  status like (Demo), (Software Update Required), (orchestration vpex_peer), or anything in brackets
+	* Updated attribute() to pick up service ports 1/s1,1/s2 on new VSP7400
+	* Method attribute() was not correctly reading BaystackERS sysname if this contained spaces
+	* Updates to ExtremeXOS error patterns
+
+1.03	2020-02-26
+	* Update to XOS y/n confirm prompt pattern
+	* Added support for Extreme Networks Series200 switches
+	* Added support for Extreme Networks Wireless Wing APs and Controllers
+	* Added support for SLX Data Center switches
+	* Attribute 'ports' now reports WLAN9100 ports as 'gig1' & 'gig2' (no longer 1 & 2) which is consistent
+	  with how those ports are configured. Same with newly supported Wing products as 'ge1', 'fe1', etc.
+	* Micro VSP XA1400 platforms now set "is_voss" attribute to true
+	* Initial detection of device now works correctly even if discovery performed in config context mode
+	* BaystackERS is no longer detected from prompt alone as there are now other Extreme family types with a
+	  similar prompt regex
+	* The default for output_record_separator is now Carriage Return ("\r") in this class. This differs from
+	  Control::CLI's default of Carriage Return + Line Feed ("\n"); the change was necessary since SLX, over
+	  the serial port, otherwise does not work properly. The change has no effect on all other Extreme
+	  Networks devices
+
+1.04	2020-04-25
+	* SLX platforms on the serial port can place a -more- prompt even in the middle of a line. The cmd()
+	  method was omitting output from that line immediately before the more prompt.
+	* SLX platforms are quite dirty in the output they produce for certain CLI commands when executed
+	  on the serial port. The cmd() method now deletes all those spurious escape character sequences.
+	* Attribute 'switch_mode' was incorrectly getting set to "Stack" on XOS switch with dedicated stacking
+	  cables connected but with stacking-mode disabled on the switch.
+	* cmd_initiated_prompt() default prompt match pattern was not matching Y/N confirm prompts from
+	  ExtremeXOS family switches and is now changed to: '[?:=]\h*(?:\(.+?\)\h*)?$'
+
+1.05	2020-11-14
+	* Update to PassportERS VOSS error patterns
+	* Update to BaystackERS error patterns
+	* Was not locking correctly onto BaystackERS CLI prompts with the TACACS suffix "<level-XX>"
+	* Was not setting 'is_voss' attribute on new 5520 switches in VOSS persona
+	* Attributes 'oob_ip' and 'is_oob_connected' were not getting set with the new VSP segmented management
+	  stack introduced in VOSS8.2
+	* Detection of attributes 'is_slx_r' was giving uninitialized value errors on SLX versions 20 and above
+	  as the "r" is now omitted from the version going forward. Attribute 'is_slx_r' will still be set as
+	  SLX versions beyond 20 are implied to be SLX-R code stream
+
+1.06	2021-12-30
+	* Was not correctly detecting the SLX9740
+	* Changed the generic prompt regex to accomodate some Linux distributions where the prompt is coloured
+	  using ANSI escape sequences
+
+1.07	2022-08-28
+	* Changes to correctly detect FabricEngine Universal Hardware VOSS 8.6.0.0 and set "is_voss" attribute
+	* Changes to correctly detect SwitchEngine Universal Hardware EXOS 31.7 and set "sw_version" attribute
+	* Fix to correctly set "fw_version" attribute on EXOS when both a Default and Alternate version are
+	  reported
+	* Methods cmdPrivExec() and cmdConfig() in some cases would return $ok true and an undefined $outputref
+	  which goes against what was documented: Arguments after $ok will only be defined if $ok is true(1)
+	* Methods cmdPrivExec() and cmdConfig() now have logic (using Control::CLI internal WRITEFLAG) to detect
+	  if the last_prompt & config_context values might be stale, in which case a fresh prompt is collected
+	  before proceeding. WRITEFLAG is introduced in Control::CLI version 2.11 and this functionality change
+	  will only work with that version of Control::CLI or later, but does not otherwise make this module
+	  incompatible with older versions of Control::CLI
+	* Slot/Port detection changed to cater for new EXOS 5720 channelized ports on standalone units
+	* PassportERS NNCLI more prompt adjusted, as the more prompt used by VOSS on command syntax is slightly
+	  different, without the space characters
+
+1.08	2023-06-18
+	* Changes to correctly detect new ISW models : ISW-4W-4WS-4X & ISW-24W-4X
+	* Implemented device_more_paging() for ISW, which can now be used to disable more paging
+	* Added support for Extreme Networks Cloud APs (HiveOS, ex Aerohive)
+	* Added support for Extreme Networks SD-WAN appliance (ex Ipanema)
+	* Added support for new attributes is_fabric_engine and is_switch_engine
+	* Added FabricEngine and SwitchEngine banner patterns to family type login detection 
+
+1.09	2023-08-03
+	* Modifications to support new Ipanema family type "router 1-3" CLI contexts
+	* Improvements to detection of Ipanema family type
+
+1.10	2023-10-08
+	* Improvements to Ipanema family type prompt regex pattern
+	* Update to default Y/N Confirmation propmt regex
+
+1.11	2024-02-25
+	* Introduced new family type ISWmarvell for ISW-24W-4X which uses a Marvell chipset
+	  and a different software operating system with a different CLI. Both ISW and
+	  ISWmarvell family types return true for attribute is_isw and both now support new
+	  attribute is_isw_marvell which can be used to differentiate between them.
+	* Y/N confirm prompts can now send "y" with or without newline character based on family type
+	* Detection of Extreme Networks Cloud APs (HiveOS, ex Aerohive) was failing with latest firmware
+	* New Universal Hardware series 4120 and 4220 have a restricted CLI, which has a prompt ending in "=";
+	  adapted module to work with modified prompt.
+	* Updated ISW error patterns
+	* Removed useless debug level line in module constructor

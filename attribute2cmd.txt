@@ -1,0 +1,261 @@
+PassportERS
+	&discoverDevice			'show bootconfig info', 'show basic config'
+	'family_type',			-login-
+	'is_nncli',			-login-
+	'is_acli',			-login-
+	'model',			'show sys info', 'show sys-info', 1
+	'sw_version',			'show sys sw', 'show sys software'
+	'fw_version',			'show bootconfig info', 'show boot config general' / acli8300: 'show boot config info'
+	'slots',			ppcli:'show ports info arp', acli8800&vsp:'show interfaces gigabitEthernet high-secure' / acli8300&8600:'show interfaces fastEthernet name' & 'show interfaces gigabitEthernet name'
+	'ports',			ppcli:'show ports info arp', acli8800&vsp:'show interfaces gigabitEthernet high-secure' / acli8300&8600:'show interfaces fastEthernet name' & 'show interfaces gigabitEthernet name'
+	'sysname',			'show sys info', 'show sys-info', 1
+	'base_mac',			'show sys info', 'show sys-info', 4
+	'baudrate'			'show bootconfig sio', 'show boot config sio', 1
+	'max_baud'			'config bootconfig sio console baud ?', "boot config sio console baud ?$CTRL_C", 1 / 8300&1600: 'config bootconfig sio baud ?', "boot config sio baud ?$CTRL_C", 1
+	-
+	'is_apls',			'show sys info', 'show sys-info', 1
+	'is_voss',			master-cpu:'show sys info', 'show sys-info', 1 / standby_cpu:'cd /', 'cd /'
+	'apls_box_type',		
+	'brand_name',			
+	'is_master_cpu',		-login-
+	'is_dual_cpu',			'show sys info', 'show sys-info', 4
+	'cpu_slot',			-login-
+	'is_ha',			'show ha-state', 'show ha-state'
+	'stp_mode',			'show bootconfig flags', 'show boot config flags'
+	'oob_ip',			vsp:'show ip interface vrf MgmtRouter' / ers:'show sys info', 'show sys-info' & 'show bootconfig config', 'show boot config running-config'
+	'oob_virt_ip',			vsp:'show ip interface vrf MgmtRouter' / ers:'show sys info', 'show sys-info' & 'show bootconfig config', 'show boot config running-config'
+	'oob_standby_ip',		vsp:'show ip interface vrf MgmtRouter' / ers:'show sys info', 'show sys-info' & 'show bootconfig config', 'show boot config running-config'
+	'is_oob_connected',		vsp:'show ip interface vrf MgmtRouter' / ers:'show sys info', 'show sys-info' & 'show bootconfig config', 'show boot config running-config'
+
+BaystackERS
+	&discoverDevice			'show ip address'
+	'family_type',			-login-
+	'is_nncli',			-login-
+	'is_acli',			-login-
+	'model',			'show sys-info'
+	'sw_version',			'show sys-info'
+	'fw_version',			'show sys-info'
+	'slots',			'show interfaces'
+	'ports',			'show interfaces'
+	'sysname',			'show sys-info'
+	'base_mac',			'show sys-info'
+	'baudrate'			'show terminal'
+	'max_baud'			"terminal speed ?$CTRL_C"
+	-
+	'unit_number',			'show sys-info'
+	'base_unit',			'show sys-info'
+	'switch_mode',			'show sys-info'
+	'stack_size',			'show sys-info'
+	'stp_mode',			'show spanning-tree mode'
+	'mgmt_vlan',			'show vlan mgmt'
+	'mgmt_ip',			'show ip'
+	'oob_ip',			'show ip'
+	'is_oob_connected',		'show ip'
+
+SecureRouter
+	&discoverDevice			'show chassis'
+	'family_type',			-login-
+	'is_nncli',			-login-
+	'is_acli',			-login-
+	'model',			'show chassis'
+	'sw_version',			'show version'
+	'fw_version',			'show version'
+	'slots',			'show interface ethernets' & 'show module configuration all'
+	'ports',			'show interface ethernets' & 'show module configuration all'
+	'sysname',			'show hostname'
+	'base_mac',			'show system configuration', 1
+	'baudrate'			''
+	'max_baud'			''
+
+WLAN2300
+	&discoverDevice			'show system'
+	'family_type',			-login-
+	'is_nncli',			-login-
+	'is_acli',			-login-
+	'model',			'show system'
+	'sw_version',			'show version'
+	'fw_version',			'show version'
+	'slots',			'show port status'
+	'ports',			'show port status'
+	'sysname',			'show system'
+	'base_mac',			'show system'
+	'baudrate'			''
+	'max_baud'			''
+
+Accelar
+	&discoverDevice			'show sys perf'
+	'family_type',			-login-
+	'is_nncli',			-login-
+	'is_acli',			-login-
+	'model',			'show config', 1
+	'sw_version',			'show config', 1
+	'fw_version',			'show config', 1
+	'slots',			'show ports info interface'
+	'ports',			'show ports info interface'
+	'sysname',			'show sys info', 3
+	'base_mac',			-n/a-
+	'baudrate'			''
+	'max_baud'			''
+	-
+	'is_master_cpu',		-login-
+	'is_dual_cpu',			'show sys info', 3
+
+WLAN9100
+	&discoverDevice			'show contact-info'
+	'family_type',			-login-
+	'is_nncli',			-login-
+	'is_acli',			-login-
+	'model',			'show system-info'
+	'sw_version',			'show system-info'
+	'fw_version',			'show system-info'
+	'slots',			-n/a-
+	'ports',			'show ethernet'
+	'sysname',			'show contact-info'
+	'base_mac',			'show system-info'
+	'baudrate'			''
+	'max_baud'			''
+
+ExtremeXOS
+	&discoverDevice			'show version | include "by release-manager"'
+	'family_type',			-login-
+	'is_nncli',			-login-
+	'is_acli',			-login-
+	'model',			'show switch'
+	'sw_version',			'show version'
+	'fw_version',			'show version'
+	'slots',			'show port debounce'
+	'ports',			'show port debounce'
+	'sysname',			'show switch'
+	'base_mac',			'show switch'
+	'baudrate'			''
+	'max_baud'			''
+	-
+	'is_xos',			-login-
+	'unit_number',			'show stacking'
+	'master_unit',			'show stacking'
+	'switch_mode',			'show stacking'
+	'stack_size',			'show stacking'
+	'stp_mode',			'show stpd s0 | include "Operational Mode"'
+	'oob_ip',			'show vlan mgmt | include "Primary IP"'
+	'is_oob_connected',		'show vlan mgmt | include "Primary IP"'
+
+ISW
+	&discoverDevice			'do show version | include ISW'
+	'family_type',			-login-
+	'is_nncli',			-login-
+	'is_acli',			-login-
+	'model',			'show version'
+	'sw_version',			'show version'
+	'fw_version',			-n/a-
+	'slots',			'show interface * veriphy'
+	'ports',			'show interface * veriphy'
+	'sysname',			'show version'
+	'base_mac',			'show version'
+	'baudrate'			-login-; 115200
+	'max_baud'			''
+	-
+	'is_isw',			-login-
+
+Series200
+	&discoverDevice			'show slot'
+	'family_type',			-login-
+	'is_nncli',			-login-
+	'is_acli',			-login-
+	'model',			'show version'
+	'sw_version',			'show version'
+	'fw_version',			'show version'
+	'slots',			'show interfaces switchport general'
+	'ports',			'show interfaces switchport general'
+	'sysname',			'show sysinfo'
+	'base_mac',			'show version'
+	'baudrate'			'show serial'
+	'max_baud'			"line console\nserial baudrate ?$CTRL_U"
+	-
+	'unit_number',			'show switch'
+	'manager_unit',			'show switch'
+	'switch_mode',			'show switch'
+	'stack_size',			'show switch'
+	'stp_mode',			'show spanning-tree active'
+	'oob_ip',			'show serviceport'
+	'is_oob_connected',		'show serviceport'
+
+Wing
+	&discoverDevice			'show version | include version|Extreme|MAC|uptime'
+	'family_type',			-login-
+	'is_nncli',			-login-
+	'is_acli',			-login-
+	'model',			'show version'
+	'sw_version',			'show version'
+	'fw_version',			'show version'
+	'slots',			'show interface switchport'
+	'ports',			'show interface switchport'
+	'sysname',			'show version'
+	'base_mac',			'show version'
+	'baudrate'			-login-; 115200
+	'max_baud'			undef
+	-
+	'is_wing',			-login-
+
+SLX
+	&discoverDevice			'show chassis | include "Chassis Name:|switchType:"'
+	'family_type',			-login-
+	'is_nncli',			-login-
+	'is_acli',			-login-
+	'model',			'show chassis | include "Chassis Name:|switchType:"'
+	'sw_version',			'show version'
+	'fw_version',			'show version'
+	'slots',			'show interface description'
+	'ports',			'show interface description'
+	'sysname',			'show system'
+	'base_mac',			'show system'
+	'baudrate'			-login- & 'show chassis | include "Chassis Name:|switchType:"'; 115200 if 9030, undef otherwise
+	'max_baud'			undef
+	-
+	'is_slx',			-login-
+	'is_slx_r',			'show version'
+	'is_slx_s',			'show version'
+	'is_slx_x',			'show version'
+	'switch_type',			'show chassis | include "Chassis Name:|switchType:"'
+	'is_active_mm',			'show ha'
+	'is_dual_mm',			'show ha'
+	'mm_number',			'show ha'
+	'is_ha',			'show ha'
+	'stp_mode',			'show spanning-tree brief | include "Spanning-tree Mode:"'
+	'oob_ip',			'show interface Management'
+	'oob_virt_ip',			'show chassis virtual-ip'
+	'oob_standby_ip',		'show interface Management'
+	'is_oob_connected',		'show interface Management'
+
+HiveOS
+	&discoverDevice			'show version'
+	'family_type',			-login-
+	'is_nncli',			-login-
+	'is_acli',			-login-
+	'model',			'show version'
+	'sw_version',			'show version'
+	'fw_version',			'show version'
+	'slots',			'show interface'
+	'ports',			'show interface'
+	'sysname',			'show running-config | include hostname'
+	'base_mac',			'show hw-info'
+	'baudrate'			-login-; 9600  ??
+	'max_baud'			undef  ??
+	-
+	'is_hiveos',			-login-
+
+Ipanema
+	&discoverDevice			'ipconfig -d'
+	'family_type',			-login-
+	'is_nncli',			-login-
+	'is_acli',			-login-
+	'model',			'version'
+	'sw_version',			'version'
+	'fw_version',			'version'
+	'slots',			'ifconfig'
+	'ports',			'ifconfig'
+	'sysname',			'ipconfig -d'
+	'base_mac',			'ifconfig'		# MAC of isw0
+	'baudrate'			-login-; 9600
+	'max_baud'			undef
+	-
+	'is_sdwan',			-login-
