@@ -87,6 +87,7 @@
 \boutput2.txt
 \bt/test-plan.txt
 \bgitdist\.
+\bludotest/
 
 # Avoid ppm ppd file
 \.ppd$

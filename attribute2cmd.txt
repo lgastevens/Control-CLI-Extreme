@@ -259,3 +259,22 @@ Ipanema
 	'max_baud'			undef
 	-
 	'is_sdwan',			-login-
+
+EnterasysOS
+	&discoverDevice			'show version' # Match Copyright (c) 2020 by Extreme Networks, Inc. | Copyright (c) 2007 by Enterasys Networks, Inc.
+	'family_type',			-login-
+	'is_nncli',			-login-
+	'is_acli',			-login-
+	'model',			'show system hardware'
+	'sw_version',			'show version' or 'show system hardware'
+	'fw_version',			'show version' or 'show system hardware'
+	'slots',			'show port speed'
+	'ports',			'show port speed'
+	'sysname',			'show system'
+	'base_mac',			'show system hardware'
+	'baudrate'			'show console baud'
+	'max_baud'			'set console baud ?'
+	-
+	'is_eos',			-login-
+	'stp_mode',			'show spantree stpmode'
+
